@@ -7,6 +7,7 @@
 	}
 
 	FoodItem.prototype.toString = function() {
+		
 		if (this.isVegan) {
 			var Vegan="vegan";
 		} else {
@@ -43,6 +44,10 @@
 		this.price=price;
 		this.foodItemArray=foodItemArray;
 	};
+
+	Drink.prototype.toString = function() {
+		return this.name + " :A refreshing choice! It is + " +
+		this.description + 
 
 	var Plate = function(name, description, price, foodItemArray) {
 		this.name=name;
