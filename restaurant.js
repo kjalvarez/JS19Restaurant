@@ -7,7 +7,7 @@
 	}
 
 	FoodItem.prototype.toString = function() {
-		
+
 		if (this.isVegan) {
 			var Vegan="vegan";
 		} else {
@@ -46,8 +46,12 @@
 	};
 
 	Drink.prototype.toString = function() {
-		return this.name + " :A refreshing choice! It is + " +
-		this.description + 
+		return this.name + " :A refreshing choice! It is " +
+			this.description + " and it costs " + this.price +
+			" . It contains " + this.foodItemArray}; 
+
+	var Beer = new Drink('Beer', 'a drink of goodness', '$4');
+	console.log(Beer.toString()); LEFT OFF HERE 2/3/14
 
 	var Plate = function(name, description, price, foodItemArray) {
 		this.name=name;
