@@ -48,10 +48,10 @@
 	Drink.prototype.toString = function() {
 		return this.name + " :A refreshing choice! It is " +
 			this.description + " and it costs " + this.price +
-			" . It contains " + this.foodItemArray}; 
+			" . Ingredients: " + this.foodItemArray.join()}; 
 
-	var Beer = new Drink('Beer', 'a drink of goodness', '$4');
-	console.log(Beer.toString()); LEFT OFF HERE 2/3/14
+	var Beer = new Drink('Beer', 'a drink of goodness', '$4' , ['hops', 'water', 'wheat']);
+	console.log(Beer.toString()); 
 
 	var Plate = function(name, description, price, foodItemArray) {
 		this.name=name;
@@ -60,13 +60,37 @@
 		this.foodItemArray=foodItemArray;
 	};
 
+	Plate.prototype.toString = function() {
+		return this.name + " is a " + 
+		this.description + "." + "It costs " +
+		this.price + "." + "Contains: " + this.foodItemArray.join();
+	}
+	
+
+	var combo = new Plate('Combo', ' mix to make anyone happy' , '$12' , ['burrito', 'enchilada', 'Spanish rice' ])
+	console.log(combo.toString());
+
 	var Order = function(plateArray) {
 		this.plateArray=plateArray;
 	};
 
+	Order.prototype.toString = function() {
+		return "You have ordered the following: " + this.plateArray.join();
+	}
+
+	var orderTest = new Order(['Burrito plate', 'Pizza Hot Dish'])
+	console.log(orderTest.toString());
+
 	var Menu = function(plateArray) {
 		this.plateArray=plateArray;
 	};
+
+	Menu.prototype.toString = function() {
+		return "We offer the following: " + this.plateArray.join();
+	}
+
+	var menuTest = new Menu(['Pizza Hot Dish', 'Lasagna', 'Mexican combo', 'Pizza'])
+	console.log(menuTest.toString());
 
 	var Restaurant = function(name, description, menu) {
 		this.name=name;
@@ -74,7 +98,26 @@
 		this.menu=menu;
 	}
 
+	Restaurant.prototype.toString = function() {
+		return "Welcome to " + this.name + "! " +
+		"We are a " + this.description + "." + 
+		" We offer a number of items, listed as follows: " + this.menu.join();
+	}
+
+	var newPlace = new Restaurant('Hangout', 'family-owned eatery in the heart of downtown', ['Pizza', 'Spaghetti'])
+
+	console.log(newPlace.toString());
+
 	var Customer = function(dietaryPreference) {
 		this.dietaryPreference= dietaryPreference;
 	}
+
+	Customer.prototype.toString = function() {
+		return "You listed the following as a dietary preference: " + this.dietaryPreference;
+	}
+
+	var testCust = new Customer('vegetarian')
+	console.log(testCust.toString());
+
+	
 
