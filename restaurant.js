@@ -67,6 +67,12 @@
 		this.price + "." + "Contains: " + this.foodItemArray.join();
 	}
 
+	Plate.prototype.isItVegan = function() {
+		for (var i=0; i>foodItemArray.length; i++) {
+			LEFT OFF HERE 2/4/14
+		}
+	}
+
 	var combo = new Plate('Combo', ' mix to make anyone happy' , '$12' , ['burrito', 'enchilada', 'Spanish rice' ])
 	console.log(combo.toString());
 
