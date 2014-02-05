@@ -1,3 +1,4 @@
+
 	var FoodItem = function(name, calories, vegan, glutenFree, citrusFree) {
 		this.name=name;
 		this.calories=calories;
@@ -65,7 +66,6 @@
 		this.description + "." + "It costs " +
 		this.price + "." + "Contains: " + this.foodItemArray.join();
 	}
-	
 
 	var combo = new Plate('Combo', ' mix to make anyone happy' , '$12' , ['burrito', 'enchilada', 'Spanish rice' ])
 	console.log(combo.toString());
