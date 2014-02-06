@@ -7,7 +7,21 @@
 		this.isCitrusFree=citrusFree;
 	}
 
-	ADD NEW FOOD ITEMS HERE FOR PLATE
+	var hops = new FoodItem('Hops', 150, false, false, true);
+	var water = new FoodItem('Water', 0, true, true, true);
+	var wheat = new FoodItem('Wheat', 50, true, false, true);
+	var beans = new FoodItem('Beans', 100, true, true, true);
+	var rice = new FoodItem('Rice',150, true, false, false);
+	var cheese = new FoodItem('Cheese', 100, false, true, true);
+	var tortilla = new FoodItem('Tortilla', 120, false, false, true);
+	var salsa = new FoodItem('Salsa', 50, true, true, false);
+	var avocado = new FoodItem('Avocado', 100, true, true, true);
+	var spices = new FoodItem('Spices', 30, true, true, false);
+	var tequila = new FoodItem('Tequila', 100, true, true, true);
+	var margMixer = new FoodItem('Mixer', 100, true, true, false);
+	var tripleSec = new FoodItem('TripleSec', 100, true, true, true);
+	var chips = new FoodItem('Chips', 100, true, false, false);
+
 
 	FoodItem.prototype.toString = function() {
 
@@ -29,7 +43,7 @@
 			var citrusFree="not citrus-free";
 		}
 		
-		return this.name + ": An excellent choice! It has " + this.calories + " calories. " +
+		return this.name + ": This contains " + this.calories + " calories. " +
 		"It is " + Vegan + ". It is " + glutenFree + "," + " and is " + citrusFree + ".";
 	}
 
@@ -53,9 +67,6 @@
 			this.description + " and it costs " + this.price +
 			" . Ingredients: " + this.foodItemArray.join()}; 
 
-	var Beer = new Drink('Beer', 'a drink of goodness', '$4' , ['hops', 'water', 'wheat']); -----> These need to be made into foodItems with constructor
-	console.log(Beer.toString()); 
-
 	var Plate = function(name, description, price, foodItemArray) {
 		this.name=name;
 		this.description=description;
@@ -66,23 +77,41 @@
 	Plate.prototype.toString = function() {
 		return this.name + " is a " + 
 		this.description + "." + "It costs " +
-		this.price + "." + "Contains: " + this.foodItemArray.join();
+		this.price + "." + "Contains: " + (this.foodItemArray.join(' '));
 	}
 
 	Plate.prototype.isItVegan = function() {
-
 		for (var i=0; i<this.foodItemArray.length; i++) {  
-			for (var j=0; j<foodItemArray[i].length; j++) {
-				if(this.fooditemArray[i].isVegan) {
-					return "This plate contains all vegan ingredients."
-				}  else {
-					return "This place contains one or more ingredients that are not vegan."
-				}
-			}
+			if(!this.foodItemArray[i].isVegan) {return false;};
+				   {
+					return true;
+				}  
+			
 		}
 
 	}
 
+	Plate.prototype.isItGlutenFree = function() {
+		for (var i=0; i<this.foodItemArray.length; i++) {  
+				if(!this.foodItemArray[i].isGlutenFree) {return false;};
+				{
+					return true;
+				}  
+			
+		}
+
+	}
+
+	Plate.prototype.isItCitrusFree = function() {   
+		for(var i=0; i<this.foodItemArray.length; i++) {  
+				if(!this.foodItemArray[i].isCitrusFree) {return false;};
+				   {
+					return true;
+				}  
+			
+		}
+
+	}
 
 	var combo = new Plate('Combo', ' mix to make anyone happy' , '$12' , ['burrito', 'enchilada', 'Spanish rice' ])
 	console.log(combo.toString());
@@ -136,5 +165,12 @@
 	var testCust = new Customer('vegetarian')
 	console.log(testCust.toString());
 
-	
+
+	var burritoPlate = new Plate('Burrito', ' healthy option full of fiber and protein', '$8', [beans, rice, cheese, tortilla, salsa]);
+	var guacamolePlate = new Plate('Guacamole plate', 'combo of homemade guacamole and chips', '$5', [avocado, chips, salsa, spices]);
+	var margarita = new Drink('House margarita', 'a traditional drink made with the finest liquor', '$5', [margMixer, tripleSec, tequila]);
+
+	console.log(burritoPlate.isItCitrusFree());	
+	console.log(guacamolePlate.toString());
+	console.log(margarita.toString());
 
