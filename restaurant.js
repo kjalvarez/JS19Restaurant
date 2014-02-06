@@ -7,6 +7,8 @@
 		this.isCitrusFree=citrusFree;
 	}
 
+	ADD NEW FOOD ITEMS HERE FOR PLATE
+
 	FoodItem.prototype.toString = function() {
 
 		if (this.isVegan) {
@@ -51,7 +53,7 @@
 			this.description + " and it costs " + this.price +
 			" . Ingredients: " + this.foodItemArray.join()}; 
 
-	var Beer = new Drink('Beer', 'a drink of goodness', '$4' , ['hops', 'water', 'wheat']);
+	var Beer = new Drink('Beer', 'a drink of goodness', '$4' , ['hops', 'water', 'wheat']); -----> These need to be made into foodItems with constructor
 	console.log(Beer.toString()); 
 
 	var Plate = function(name, description, price, foodItemArray) {
@@ -68,10 +70,19 @@
 	}
 
 	Plate.prototype.isItVegan = function() {
-		for (var i=0; i>foodItemArray.length; i++) {
-			LEFT OFF HERE 2/4/14
+
+		for (var i=0; i<this.foodItemArray.length; i++) {  
+			for (var j=0; j<foodItemArray[i].length; j++) {
+				if(this.fooditemArray[i].isVegan) {
+					return "This plate contains all vegan ingredients."
+				}  else {
+					return "This place contains one or more ingredients that are not vegan."
+				}
+			}
 		}
+
 	}
+
 
 	var combo = new Plate('Combo', ' mix to make anyone happy' , '$12' , ['burrito', 'enchilada', 'Spanish rice' ])
 	console.log(combo.toString());
