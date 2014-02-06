@@ -65,7 +65,7 @@
 	Drink.prototype.toString = function() {
 		return this.name + " :A refreshing choice! It is " +
 			this.description + " and it costs " + this.price +
-			" . Ingredients: " + this.foodItemArray.join()}; 
+			" . Ingredients: " + this.foodItemArray.join(" ")}; 
 
 	var Plate = function(name, description, price, foodItemArray) {
 		this.name=name;
@@ -121,7 +121,7 @@
 	};
 
 	Order.prototype.toString = function() {
-		return "You have ordered the following: " + this.plateArray.join();
+		return "You have ordered the following: " + this.plateArray.join(" ");
 	}
 
 	var orderTest = new Order(['Burrito plate', 'Pizza Hot Dish'])
@@ -132,7 +132,7 @@
 	};
 
 	Menu.prototype.toString = function() {
-		return "We offer the following: " + this.plateArray.join();
+		return this.plateArray.join(" ");
 	}
 
 	var menuTest = new Menu(['Pizza Hot Dish', 'Lasagna', 'Mexican combo', 'Pizza'])
@@ -147,12 +147,8 @@
 	Restaurant.prototype.toString = function() {
 		return "Welcome to " + this.name + "! " +
 		"We are a " + this.description + "." + 
-		" We offer a number of items, listed as follows: " + this.menu.join();
+		" We offer a number of items, listed as follows: " + newMenu;
 	}
-
-	var newPlace = new Restaurant('Hangout', 'family-owned eatery in the heart of downtown', ['Pizza', 'Spaghetti'])
-
-	console.log(newPlace.toString());
 
 	var Customer = function(dietaryPreference) {
 		this.dietaryPreference= dietaryPreference;
@@ -173,4 +169,12 @@
 	console.log(burritoPlate.isItCitrusFree());	
 	console.log(guacamolePlate.toString());
 	console.log(margarita.toString());
+
+	var newMenu = new Menu([burritoPlate, guacamolePlate, margarita]);
+	console.log(newMenu); 
+
+	var newPlace = new Restaurant('The Hangout', 'family-owned eatery in the heart of downtown', newMenu);
+	console.log(newPlace);
+
+	console.log(newPlace.toString());
 
